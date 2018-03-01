@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.androidapp.ilost.ilost.LoginActivity">
+
+
+    <LinearLayout
+        android:id="@+id/sign_in_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#eee"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/sign_in_txt_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="50dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_bordor"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="1dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <EditText
+                android:id="@+id/user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/edt_bordor"
+            android:layout_marginTop="25dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="1dp"
+                android:src="@mipmap/ic_launcher"/>
+
+            <EditText
+                android:id="@+id/user_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="password"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="45dp"
+            android:text="@string/sign_in"
+            android:background="@drawable/button_bg"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:padding="15dp"/>
+
+        <TextView
+            android:id="@+id/txtGotoSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/no_acc"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/sign_up_via_social"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="@string/r_signup_with"
+            android:textColor="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/google_login"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/google_logo"
+                android:padding="3dp"
+                android:background="@drawable/google_rounded_button"/>
+
+
+            <ImageView
+                android:id="@+id/fb_login"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/fb_logo"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp" />
+
+
+            <ImageView
+                android:id="@+id/twitter_login"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/twitter_logo"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" />
+
+            <ImageView
+                android:id="@+id/phone_login"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/phone_logo"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

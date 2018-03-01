@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">iLost</string>
+
+    <string name="home">Home</string>
+    <string name="message">Message</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+
+    <string name="skip">Skip</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="don_have_acc">Don\'t have account</string>
+
+    <string name="sign_up">Sign Up</string>
+    <string name="username">Username</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="com_password">Comfirm Password</string>
+    <string name="user_name">Username</string>
+    <string name="no_acc">No account? click to Sign Up</string>
+    <string name="r_signup_with">Or Sign up via</string>
+    <string name="have_acc">Already have account? click to Sign In</string>
+    <string name="verify_code">Verification code</string>
+    <string name="pls_type_verify_code">Please type the verification code sent to your phone.</string>
+    <string name="not_receive_verify">Did not receive the code?</string>
+
+    <!--facebook-->
+    <string name="facebook_app_id">556138374761035</string>
+    <string name="fb_login_protocol_scheme">fb556138374761035</string>
+    <string name="please_wait">please wait</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="log_with_phone">Phone Login</string>
+    <string name="hint_phone_num">Phone Number</string>
+    <string name="verify_note">By Login with phone number, you need to insert your phone number and then the verify code will send to your phone.</string>
+
+    <string name="consumer_key">b4eIK7iOS0Zk1k0IPnWoAs5LV</string>
+    <string name="consumer_secret">lvuFCHYpXUL2NAsJBKCCZVwFi2AjmDmbjCGAR0Mn62ZMOLQMiI</string>
+</resources>

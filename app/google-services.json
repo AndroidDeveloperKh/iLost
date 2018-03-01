@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "162977979763",
+    "firebase_url": "https://ilost-db6d3.firebaseio.com",
+    "project_id": "ilost-db6d3",
+    "storage_bucket": "ilost-db6d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162977979763:android:3fed50b0f571cbd2",
+        "android_client_info": {
+          "package_name": "kh.com.ilost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162977979763-uqfiiiiuj8bp5ju8rno5f7oego2d0hqs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kh.com.ilost",
+            "certificate_hash": "89169091ad412a6d97ad93a36919e77a95412089"
+          }
+        },
+        {
+          "client_id": "162977979763-7og3nvt3qrevuchoaulpn40hd8bp1h6i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3Q3WojhFab80d89Fd1foTzZlVfYLlkd8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162977979763-7og3nvt3qrevuchoaulpn40hd8bp1h6i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
