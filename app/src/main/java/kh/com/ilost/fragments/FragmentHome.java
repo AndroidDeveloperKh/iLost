@@ -38,28 +38,24 @@ public class FragmentHome extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         Button btnLogout = root.findViewById(R.id.home_btn_logout);
-
         txUemail = root.findViewById(R.id.home_txt_user_email);
-
-        fAuth = FirebaseAuth.getInstance();
-
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 logout();
-
                 updateUI(null);
             }
         });
+        fAuth = FirebaseAuth.getInstance();
 
         return root;
     }
 
-    private void logout() {
 
+    private void logout() {
         fAuth.signOut();
         LoginManager.getInstance().logOut();
+        Toast.makeText(getContext(), "Logged out", Toast.LENGTH_LONG).show();
         Intent googleIntent = new Intent(getContext(), LoginActivity.class);
         startActivity(googleIntent);
     }
@@ -69,7 +65,6 @@ public class FragmentHome extends Fragment {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = fAuth.getCurrentUser();
-
         if (currentUser != null){
             updateUI(currentUser);
         }
@@ -78,12 +73,9 @@ public class FragmentHome extends Fragment {
 
 
     private void updateUI(FirebaseUser firebaseUser) {
-
         if(firebaseUser != null) {
-            Toast.makeText(getContext(), "Logged out", Toast.LENGTH_LONG).show();
             txUemail.setText(firebaseUser.getEmail());
         }
-
     }
 
 

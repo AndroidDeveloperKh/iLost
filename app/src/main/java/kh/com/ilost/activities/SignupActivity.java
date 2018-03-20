@@ -47,10 +47,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_signup);
 
         //call to reference
-        btnSignup = (Button)findViewById(R.id.btnSignup);
+        btnSignup = findViewById(R.id.btnSignup);
         btnSignup.setOnClickListener(this);
 
-        txtGotoSignin = (TextView)findViewById(R.id.txtGotoSignin);
+        txtGotoSignin = findViewById(R.id.txtGotoSignin);
         txtGotoSignin.setOnClickListener(this);
 
         reDatabase = FirebaseDatabase.getInstance().getReference();
@@ -58,10 +58,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         progressDialog = new ProgressDialog(this);
 
-        edtUsername = (EditText)findViewById(R.id.user_name);
-        edtUserEmail = (EditText)findViewById(R.id.user_email);
-        edtuserPassword = (EditText)findViewById(R.id.user_password);
-        edtComPassword = (EditText)findViewById(R.id.com_password);
+        edtUsername = findViewById(R.id.user_name);
+        edtUserEmail = findViewById(R.id.user_email);
+        edtuserPassword = findViewById(R.id.user_password);
+        edtComPassword = findViewById(R.id.com_password);
     }
 
     @Override
@@ -129,19 +129,16 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void writeUser(FirebaseUser user){
-
-        String key = reDatabase.child("users").push().getKey();
-//        Map<String, Object> map = new HashMap<>();
+        String uid = user.getUid();
 
         // account
         Map<String, Object> account = new HashMap<>();
-        account.put("user_id", key);
+        account.put("uid", uid);
         account.put("name", user.getDisplayName());
         account.put("email", user.getEmail());
         account.put("created_date", System.currentTimeMillis());
 
-//        map.put("account", account);
-        reDatabase.child("users").child(key).setValue(account);
+        reDatabase.child("users").child(uid).setValue(account);
         Toast.makeText(getApplicationContext(),"Added user to database", Toast.LENGTH_LONG).show();
     }
 

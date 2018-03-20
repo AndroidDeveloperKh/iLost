@@ -7,6 +7,12 @@
     <string name="settings">Settings</string>
 
     <string name="skip">Skip</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_delete">Are you sure to delete?</string>
+    <string name="no">No</string>
+    <string name="edit_message">Edit Message</string>
 
     <string name="sign_in">Sign In</string>
     <string name="email">Email</string>
@@ -38,7 +44,8 @@
     <string name="resend_code">Resend Code</string>
     <string name="log_with_phone">Phone Login</string>
     <string name="hint_phone_num">Phone Number</string>
-    <string name="verify_note">By Login with phone number, you need to insert your phone number and then the verify code will send to your phone.</string>
+    <string name="verify_note">By Login with phone number,
+        you need to insert your phone number and then the verify code will send to your phone.</string>
 
     <string name="consumer_key">b4eIK7iOS0Zk1k0IPnWoAs5LV</string>
     <string name="consumer_secret">lvuFCHYpXUL2NAsJBKCCZVwFi2AjmDmbjCGAR0Mn62ZMOLQMiI</string>

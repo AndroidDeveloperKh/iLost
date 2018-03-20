@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_message"
-        android:icon="@drawable/message3"
+        android:icon="@drawable/ic_message"
         android:title="@string/message" />
 
     <item

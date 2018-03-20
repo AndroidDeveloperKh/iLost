@@ -123,7 +123,7 @@
                     android:text="@string/log_with_phone"
                     android:paddingEnd="16dp"
                     android:paddingStart="16dp"
-                    android:background="@drawable/corner_white_border"
+                    android:background="@drawable/ic_send_violet"
                     android:layout_gravity="center"
                     android:id="@+id/loginButton"
                     android:textColor="#ffffff"
@@ -221,7 +221,7 @@
             android:layout_marginTop="6dp"
             android:layout_gravity="center"
             android:id="@+id/resend_code"
-            android:background="@drawable/corner_white_border"
+            android:background="@drawable/ic_send_violet"
             android:textSize="12sp"
             android:textColor="#ffffff"
             />

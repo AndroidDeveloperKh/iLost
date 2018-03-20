@@ -1,8 +1,11 @@
 package kh.com.ilost.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,21 +13,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import kh.com.ilost.R;
-import kh.com.ilost.activities.MessageAdapter;
+import kh.com.ilost.activities.ChatActivity;
+import kh.com.ilost.adapters.ChatAdapter;
 import kh.com.ilost.models.User;
 
 
-public class FragmentMessage extends Fragment implements MessageAdapter.MessageClickListener {
+public class FragmentMessage extends Fragment implements
+        SwipeRefreshLayout.OnRefreshListener, ChatAdapter.ChatClickListener {
 
 
+    SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recyclerView;
 
-    MessageAdapter messageAdapter;
-    List<User> users = new ArrayList<>();
+    ChatAdapter chatAdapter;
+    List<User> chatList = new ArrayList<>();
 
 
     public FragmentMessage() {
@@ -33,10 +45,13 @@ public class FragmentMessage extends Fragment implements MessageAdapter.MessageC
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_message, container, false);
+
+        swipeRefreshLayout = root.findViewById(R.id.message_swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
         recyclerView = root.findViewById(R.id.message_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -44,18 +59,51 @@ public class FragmentMessage extends Fragment implements MessageAdapter.MessageC
         layoutManager.setReverseLayout(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        messageAdapter = new MessageAdapter(getContext(), users);
-        messageAdapter.setMessageClickListener(this);
-        recyclerView.setAdapter(messageAdapter);
+        loadChatList();
+        chatAdapter = new ChatAdapter(getContext(), chatList);
+        chatAdapter.setChatClickListener(this);
+        recyclerView.setAdapter(chatAdapter);
 
         return root;
     }
 
 
+    private void loadChatList() {
+        swipeRefreshLayout.setRefreshing(true);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                chatList.clear();
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    User listUser = child.getValue(User.class);
+                    chatList.add(listUser);
+                    Log.d("app", child.toString());
+                }
+                chatAdapter.setChatList(chatList);
+                chatAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+
     @Override
-    public void onMessageClick(View view, int position) {
-        User user = users.get(position);
-        Log.d("app", user.getEmail());
+    public void onRefresh() {
+        loadChatList();
+    }
+
+
+    @Override
+    public void onChatClick(View view, int position) {
+        User user = chatList.get(position);
+        startActivity(new Intent(getContext(), ChatActivity.class)
+                .putExtra("uidFriend", user.getUid()));
     }
 
 }

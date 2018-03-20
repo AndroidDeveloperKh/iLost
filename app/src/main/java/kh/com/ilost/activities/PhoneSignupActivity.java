@@ -74,16 +74,16 @@ public class PhoneSignupActivity extends AppCompatActivity {
         getWindow().setBackgroundDrawableResource(R.drawable.gradiennt1);
 
         //define views here
-        inputCodeLayout = (LinearLayout) findViewById(R.id.inputCodeLayout);
-        loadingProgress = (LinearLayout)findViewById(R.id.loadingProgress);
+        inputCodeLayout = findViewById(R.id.inputCodeLayout);
+        loadingProgress = findViewById(R.id.loadingProgress);
         loadingProgress.setVisibility(View.INVISIBLE);
-        verifyLayout = (LinearLayout)findViewById(R.id.verifyLayout);
-        ccp = (CountryCodePicker) findViewById(R.id.ccp);
-        loginButton = (Button)findViewById(R.id.loginButton);
-        phoneNumber = (AppCompatEditText)findViewById(R.id.phone_number);
-        timer = (TextView) findViewById(R.id.timer);
-        resendCode = (Button) findViewById(R.id.resend_code);
-        smsCode = (Pinview) findViewById(R.id.sms_code);
+        verifyLayout = findViewById(R.id.verifyLayout);
+        ccp = findViewById(R.id.ccp);
+        loginButton = findViewById(R.id.loginButton);
+        phoneNumber = findViewById(R.id.phone_number);
+        timer = findViewById(R.id.timer);
+        resendCode = findViewById(R.id.resend_code);
+        smsCode = findViewById(R.id.sms_code);
 
 
         showView(verifyLayout); //show the main layout
