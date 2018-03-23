@@ -46,7 +46,7 @@
     <string name="hint_phone_num">Phone Number</string>
     <string name="verify_note">By Login with phone number,
         you need to insert your phone number and then the verify code will send to your phone.</string>
-
-    <string name="consumer_key">b4eIK7iOS0Zk1k0IPnWoAs5LV</string>
-    <string name="consumer_secret">lvuFCHYpXUL2NAsJBKCCZVwFi2AjmDmbjCGAR0Mn62ZMOLQMiI</string>
+    <string name="email_logo">email_logo</string>
+    <string name="password_logo">password_logo</string>
+    <string name="log_in_with_Mobile_Number">Log in with Mobile Number</string>
 </resources>

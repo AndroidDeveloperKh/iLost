@@ -2,7 +2,6 @@ package kh.com.ilost.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -27,13 +26,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import kh.com.ilost.R;
-import kh.com.ilost.models.User;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    private Button btnSignup;
-    private TextView txtGotoSignin;
 
     private EditText edtUsername, edtUserEmail, edtuserPassword, edtComPassword;
 
@@ -47,10 +42,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_signup);
 
         //call to reference
-        btnSignup = findViewById(R.id.btnSignup);
-        btnSignup.setOnClickListener(this);
+        Button btnSignUp = findViewById(R.id.sign_up_btn_btn_sign_up);
+        btnSignUp.setOnClickListener(this);
 
-        txtGotoSignin = findViewById(R.id.txtGotoSignin);
+        TextView txtGotoSignin = findViewById(R.id.sign_up_txt_goto_sign_in);
         txtGotoSignin.setOnClickListener(this);
 
         reDatabase = FirebaseDatabase.getInstance().getReference();
@@ -58,10 +53,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         progressDialog = new ProgressDialog(this);
 
-        edtUsername = findViewById(R.id.user_name);
-        edtUserEmail = findViewById(R.id.user_email);
-        edtuserPassword = findViewById(R.id.user_password);
-        edtComPassword = findViewById(R.id.com_password);
+        edtUsername = findViewById(R.id.sign_up_edt_username);
+        edtUserEmail = findViewById(R.id.sign_up_edt_user_email);
+        edtuserPassword = findViewById(R.id.sign_up_edt_user_password);
+        edtComPassword = findViewById(R.id.sign_up_edt_com_password);
     }
 
     @Override
@@ -69,11 +64,11 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         switch (view.getId()) {
 
-            case R.id.btnSignup:
+            case R.id.sign_up_btn_btn_sign_up:
                 userSignup();
                 break;
 
-            case R.id.txtGotoSignin:
+            case R.id.sign_up_txt_goto_sign_in:
                 Intent signupIntent = new Intent(this,LoginActivity.class);
                 startActivity(signupIntent);
                 break;
@@ -94,7 +89,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
             if (password.contentEquals(comfirmPassword)){
 
-                progressDialog.setMessage("Singing up...");
+                progressDialog.setMessage("Signing up...");
                 progressDialog.show();
 
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -129,17 +124,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void writeUser(FirebaseUser user){
-        String uid = user.getUid();
 
-        // account
+        String key = user.getUid();
+
         Map<String, Object> account = new HashMap<>();
-        account.put("uid", uid);
+        account.put("uid", user.getUid());
         account.put("name", user.getDisplayName());
         account.put("email", user.getEmail());
-        account.put("created_date", System.currentTimeMillis());
-
-        reDatabase.child("users").child(uid).setValue(account);
-        Toast.makeText(getApplicationContext(),"Added user to database", Toast.LENGTH_LONG).show();
+        account.put("provider", user.getProviderId());
+        //noinspection ConstantConditions
+        account.put("createdDate", user.getMetadata().getCreationTimestamp());
+        account.put("signedInDate", user.getMetadata().getLastSignInTimestamp());
+        reDatabase.child("users").child(key).child("info").setValue(account);
     }
 
 
@@ -150,14 +146,14 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 .build();
 
         user.updateProfile(profileUpdates)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            writeUser(user);
-                            Log.d("app", "added user to db");
-                        }
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        writeUser(user);
+                        Log.d("app", "added user to db");
                     }
-                });
+                }
+            });
     }
 }
