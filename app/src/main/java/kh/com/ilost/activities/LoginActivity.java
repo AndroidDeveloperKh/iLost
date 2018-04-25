@@ -1,5 +1,4 @@
 package kh.com.ilost.activities;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -35,28 +33,20 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
 import java.util.Arrays;
-
 import kh.com.ilost.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
     private boolean isFirstStart;
-
     private ImageView imgFacebook;
     private EditText edtEmail, edtPassword;
-
     private ProgressDialog progressDialog;
-
     private FirebaseAuth firebaseAuth;
-
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
-    private GoogleSignInClient mGoogleSignInClient;
-
+    private GoogleSignInClient clientGoogleSignIn;
     //facebook
-    private CallbackManager mCallbackManager;
+    private CallbackManager fbCallbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +57,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Button btnSignIn = findViewById(R.id.login_btn_signin);
         btnSignIn.setOnClickListener(this);
 
-        TextView txtGotoSignup = findViewById(R.id.login_txt_goto_sign_up);
-        txtGotoSignup.setOnClickListener(this);
+        TextView txtGotoSignUp = findViewById(R.id.login_txt_goto_sign_up);
+        txtGotoSignUp.setOnClickListener(this);
 
         ImageView imgGoogle = findViewById(R.id.login_img_google_login);
         imgGoogle.setOnClickListener(this);
@@ -91,12 +81,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .requestEmail()
                 .build();
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
+        clientGoogleSignIn = GoogleSignIn.getClient(this, gso);
         firebaseAuth = FirebaseAuth.getInstance();
-
         // Initialize Facebook Login button
-        mCallbackManager = CallbackManager.Factory.create();
+        fbCallbackManager = CallbackManager.Factory.create();
 
         appIntro();
     }
@@ -107,24 +95,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId()) {
 
             case R.id.login_btn_signin:
-                userSingin();
+                userSingIn();
                 break;
 
             case R.id.login_txt_goto_sign_up:
-                Intent signupIntent = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivity(signupIntent);
+                Intent signUpIntent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(signUpIntent);
                 break;
 
             case R.id.login_img_google_login:
-                googleSignup();
+                googleSignUp();
                 break;
 
             case R.id.login_img_fb_login:
-                facebookSignup();
+                facebookSignUp();
                 break;
 
             case R.id.login_img_phone_login:
-                phoneSignup();
+                phoneSignUp();
                 break;
 
             default:
@@ -133,22 +121,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private void phoneSignup() {
-
+    //sign up via phone number
+    private void phoneSignUp() {
         Intent googleIntent = new Intent(this, PhoneSignupActivity.class);
         startActivity(googleIntent);
-
     }
 
-    private void facebookSignup() {
-
+    //sign up via facebook
+    private void facebookSignUp() {
         imgFacebook.setEnabled(false);
 
         LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
-        LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        LoginManager.getInstance().registerCallback(fbCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("FaceLog", "facebook:onSuccess:" + loginResult);
+                progressDialog.setMessage("Logging in...");
+                progressDialog.show();
+
+                Log.d("FaceLog", "facebook:onSuccess: " + loginResult.getAccessToken().toString());
+                Log.d("kk","kk" + loginResult.getAccessToken().getUserId());
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
@@ -162,48 +153,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.d("FaceLog", "facebook:onError", error);
             }
         });
-
     }
 
-    private void googleSignup() {
+    private void handleFacebookAccessToken(AccessToken token) {
+        Log.d(TAG, "handleFacebookAccessToken:" + token);
 
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-    private void userSingin() {
-
-        String email = edtEmail.getText().toString();
-        String password = edtPassword.getText().toString();
-
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            Toast.makeText(LoginActivity.this, "Fields cannot empty", Toast.LENGTH_LONG).show();
-        } else {
-
-            progressDialog.setMessage("Logging in...");
-            progressDialog.show();
-
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        firebaseAuth.signInWithCredential(credential)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-
-                    if (!task.isSuccessful()) {
-                        Toast.makeText(LoginActivity.this, "Email or password is incorrect.", Toast.LENGTH_LONG).show();
-
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
+                        imgFacebook.setEnabled(true);
+                        Intent fbIntent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(fbIntent);
                     } else {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
 
-                        progressDialog.dismiss();
+                        imgFacebook.setEnabled(true);
                     }
+
                 }
             });
-        }
+    }
+
+    //sign up via google account
+    private void googleSignUp() {
+        Intent signInIntent = clientGoogleSignIn.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (resultCode == RESULT_OK) {
             if (requestCode == RC_SIGN_IN) {
@@ -219,9 +206,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         }
-
         // Pass the activity result back to the Facebook SDK
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        fbCallbackManager.onActivityResult(requestCode, resultCode, data);
 
     }
 
@@ -231,23 +217,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-//                            FirebaseUser user = fAuth.getCurrentUser();
-                            updateUI();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            updateUI();
-                        }
-
-                        progressDialog.show();
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
+                        updateUI();
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        updateUI();
                     }
-                });
+
+                    progressDialog.show();
+                }
+            });
     }
 
     @Override
@@ -269,37 +254,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         finish();
     }
 
-    private void handleFacebookAccessToken(AccessToken token) {
-        Log.d(TAG, "handleFacebookAccessToken:" + token);
+    //sign up via email address
+    private void userSingIn() {
+        String email = edtEmail.getText().toString();
+        String password = edtPassword.getText().toString();
 
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-//                            FirebaseUser user = fAuth.getCurrentUser();
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            Toast.makeText(LoginActivity.this, "Fields cannot empty", Toast.LENGTH_LONG).show();
+        } else {
 
-                            imgFacebook.setEnabled(true);
-//                            updateUI();
-                            Intent fbIntent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(fbIntent);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+            progressDialog.setMessage("Logging in...");
+            progressDialog.show();
 
-                            imgFacebook.setEnabled(true);
-//                            updateUI();
-                        }
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(LoginActivity.this, "Email or password is incorrect.", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+
+                    } else {
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                        progressDialog.dismiss();
                     }
-                });
+                }
+            });
+        }
     }
 
+    //app introduction
     private void appIntro() {
         Thread thread = new Thread(new Runnable() {
             @Override

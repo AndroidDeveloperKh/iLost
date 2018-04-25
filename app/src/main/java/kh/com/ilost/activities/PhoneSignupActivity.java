@@ -59,7 +59,7 @@ public class PhoneSignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_signup);
 
-        getWindow().setBackgroundDrawableResource(R.drawable.gradiennt1);
+        getWindow().setBackgroundDrawableResource(R.drawable.phone_login_bg);
 
         inputCodeLayout = findViewById(R.id.phone_signup_input_code_layout);
         verifyLayout = findViewById(R.id.phone_signup_verify_layout);

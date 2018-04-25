@@ -73,7 +73,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public int getItemViewType(int position) {
         Chat chat = chatHistory.get(position);
-        String uid = FirebaseAuth.getInstance().getUid();
+        //noinspection ConstantConditions
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         if (chat.getSender().equals(uid)) {
             return VIEW_TYPE_MESSAGE_SENT;
         } else {

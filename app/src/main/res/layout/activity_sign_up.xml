@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="kh.com.ilost.activities.SignUpActivity">
+
+    <LinearLayout
+        android:id="@+id/sign_up_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:id="@+id/sign_up_txt_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="50dp"/>
+
+        <EditText
+            android:id="@+id/sign_up_edt_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_bordor"
+            android:hint="@string/user_name"
+            android:inputType="text"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/sign_up_edt_user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_bordor"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"/>
+
+
+        <EditText
+            android:id="@+id/sign_up_edt_user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_bordor"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"/>
+
+        <EditText
+            android:id="@+id/sign_up_edt_com_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_bordor"
+            android:hint="@string/com_password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"/>
+
+        <Button
+            android:id="@+id/sign_up_btn_btn_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="55dp"
+            android:background="@drawable/button_bg"
+            android:text="@string/sign_up"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:padding="15dp"/>
+
+        <TextView
+            android:id="@+id/sign_up_txt_goto_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/have_acc"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</ScrollView>

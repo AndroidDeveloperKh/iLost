@@ -38,8 +38,8 @@
     <string name="not_receive_verify">Did not receive the code?</string>
 
     <!--facebook-->
-    <string name="facebook_app_id">556138374761035</string>
-    <string name="fb_login_protocol_scheme">fb556138374761035</string>
+    <string name="facebook_app_id">301185743748799</string>
+    <string name="fb_login_protocol_scheme">fb301185743748799</string>
     <string name="please_wait">please wait</string>
     <string name="resend_code">Resend Code</string>
     <string name="log_with_phone">Phone Login</string>

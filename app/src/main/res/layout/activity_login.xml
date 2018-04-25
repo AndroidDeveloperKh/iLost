@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#eee"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="kh.com.ilost.activities.LoginActivity">
@@ -11,9 +12,8 @@
         android:id="@+id/sign_in_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eee"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="30dp">
 
         <TextView
             android:id="@+id/sign_in_txt_app_name"

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:id="@+id/phone_signup_verify_layout"
         android:orientation="vertical"
-        android:background="@drawable/gradiennt1"
+        android:background="@drawable/phone_login_bg"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true">
@@ -99,7 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/gradiennt1"
+        android:background="@drawable/phone_login_bg"
         android:id="@+id/phone_signup_input_code_layout"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
