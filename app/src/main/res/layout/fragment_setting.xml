@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.SettingFragment">
+
+
+    <RelativeLayout
+        android:id="@+id/r_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true">
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/c_account"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="4dp"
+            app:cardCornerRadius="3dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/profile_edit"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
+
+            <TextView
+                android:id="@+id/txt_username"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="25dp"
+                android:hint="@string/username"
+                android:layout_marginLeft="110dp"
+                android:textSize="17dp" />
+
+            <!--android:layout_alignLeft="@+id/profile_image"-->
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+
+            android:id="@+id/c_account_setting"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="100dp"
+            app:cardCornerRadius="3dp"
+            android:layout_alignParentLeft="true">
+
+
+            <ImageView
+                android:id="@+id/img_account"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/settings2" />
+
+            <TextView
+                android:id="@+id/t_account_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:paddingTop="10dp"
+                android:text="@string/account_setting"
+                android:textColor="@color/grayblue"
+                android:textSize="16dp" />
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+
+            android:id="@+id/c_save"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/c_account"
+            android:layout_marginTop="70dp"
+            app:cardCornerRadius="3dp">
+
+
+            <ImageView
+                android:id="@+id/t_save"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/save" />
+
+            <TextView
+                android:id="@+id/t_saves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/t_save"
+                android:layout_marginLeft="80dp"
+                android:paddingTop="10dp"
+                android:text="@string/save"
+                android:textColor="@color/grayblue"
+                android:textSize="16dp" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/c_notifi"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/c_save"
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="3dp">
+
+            <ImageView
+                android:id="@+id/t_noti"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/notifi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/t_lang"
+                android:layout_marginLeft="80dp"
+                android:paddingTop="10dp"
+                android:text="@string/notification"
+                android:textColor="@color/grayblue"
+
+                android:textSize="16dp" />
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/home_btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/c_notifi"
+            android:layout_marginTop="100dp"
+            app:cardCornerRadius="3dp"
+
+            >
+
+            <TextView
+                android:id="@+id/home_btn_logouts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/logout"
+                android:textColor="@color/grayblue"
+                android:textSize="20dp" />
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

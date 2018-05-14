@@ -5,4 +5,18 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorViolet">#7463d2</color>
     <color name="ColorLightGreen">#cadedf</color>
+
+
+
+    <color name="gray">#545a5d</color>
+    <color name="white">#Ffffff</color>
+    <color name="light_gray">#bdbdbd</color>
+    <color name="light_brown">#a1887f </color>
+    <color name="brown">#3e2723</color>
+    <color name="black">#000000</color>
+    <color name="darkblue">#1c2331</color>
+    <color name="grayblue">#263238</color>
+    <color name="dark">#1c2a48</color>
 </resources>
+
+

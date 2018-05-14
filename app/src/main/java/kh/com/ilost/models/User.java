@@ -15,6 +15,17 @@ public class User {
     private double updatedAt;
 
 
+    public User(String uid, String name, String email) {
+        this.uid = uid;
+        this.name = name;
+        this.email = email;
+
+    }
+
+    public User(){
+
+    }
+
     public String getUid() {
         return uid;
     }
