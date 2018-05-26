@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/vh_post_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/vh_post_img_user_profile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@color/colorLightGray"
+                android:contentDescription="@string/app_name" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/vh_post_img_user_profile"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/vh_post_txt_user_name"
+                    android:layout_width="160dp"
+                    android:layout_height="12dp"
+                    android:background="@color/colorLightGray" />
+
+                <View
+                    android:id="@+id/vh_post_txt_timestamp"
+                    android:layout_width="80dp"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorLightGray" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/vh_post_txt_post_title"
+                android:layout_width="280dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/colorLightGray" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/colorLightGray" />
+
+            <View
+                android:layout_width="180dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/colorLightGray" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_weight="1"
+                android:background="@color/colorLightGray" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_weight="1"
+                android:background="@color/colorLightGray" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

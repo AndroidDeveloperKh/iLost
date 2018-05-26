@@ -1,7 +1,8 @@
 package kh.com.ilost.models;
 
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable {
 
     private String uid;
     private String name;

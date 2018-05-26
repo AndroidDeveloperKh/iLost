@@ -4,6 +4,7 @@ package kh.com.ilost.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,87 +24,90 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kh.com.ilost.R;
-import kh.com.ilost.activities.ChatActivity;
-import kh.com.ilost.adapters.ChatAdapter;
+import kh.com.ilost.activities.SendMessageActivity;
+import kh.com.ilost.adapters.ChatListAdapter;
 import kh.com.ilost.models.User;
 
 
 public class FragmentMessage extends Fragment implements
-        SwipeRefreshLayout.OnRefreshListener, ChatAdapter.ChatClickListener {
+        SwipeRefreshLayout.OnRefreshListener, ChatListAdapter.ChatClickListener {
 
 
-    SwipeRefreshLayout swipeRefreshLayout;
-    RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
-    ChatAdapter chatAdapter;
-    List<User> chatList = new ArrayList<>();
+    private ChatListAdapter chatAdapter;
+    private List<User> listUser = new ArrayList<>();
 
 
     public FragmentMessage() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (getActivity() != null) {
+            getActivity().setTitle("Messages");
+        }
+        return inflater.inflate(R.layout.fragment_message, container, false);
+    }
 
-        View root = inflater.inflate(R.layout.fragment_message, container, false);
-
-        swipeRefreshLayout = root.findViewById(R.id.message_swipe_refresh_layout);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        swipeRefreshLayout = view.findViewById(R.id.message_swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-        recyclerView = root.findViewById(R.id.message_recycler_view);
+        RecyclerView recyclerView = view.findViewById(R.id.message_recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setReverseLayout(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        loadChatList();
-        chatAdapter = new ChatAdapter(getContext(), chatList);
+        loadListUser();
+        chatAdapter = new ChatListAdapter(getContext(), listUser);
         chatAdapter.setChatClickListener(this);
         recyclerView.setAdapter(chatAdapter);
-
-        return root;
     }
 
-
-    private void loadChatList() {
+    private void loadListUser() {
+        // load list of history chatting
         swipeRefreshLayout.setRefreshing(true);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                chatList.clear();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listUser.clear();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    User listUser = child.getValue(User.class);
-                    chatList.add(listUser);
+                    User user = child.getValue(User.class);
+                    listUser.add(user);
                     Log.d("app", child.toString());
                 }
-                chatAdapter.setChatList(chatList);
-                chatAdapter.notifyDataSetChanged();
+                chatAdapter.setChatList(listUser);
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("app", databaseError.getDetails());
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
-        swipeRefreshLayout.setRefreshing(false);
+
     }
 
 
     @Override
     public void onRefresh() {
-        loadChatList();
+        loadListUser();
     }
 
 
     @Override
     public void onChatClick(View view, int position) {
-        User user = chatList.get(position);
-        startActivity(new Intent(getContext(), ChatActivity.class)
-                .putExtra("uidFriend", user.getUid()));
+        User user = listUser.get(position);
+        startActivity(new Intent(getContext(), SendMessageActivity.class)
+                .putExtra("user", user));
     }
 
-}
+} // end
