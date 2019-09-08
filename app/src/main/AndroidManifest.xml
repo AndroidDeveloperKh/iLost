@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="kh.com.ilost">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission
+        android:name="android.permission.MEDIA_CONTENT_CONTROL"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -48,7 +58,20 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ChatActivity"/>
+        <activity android:name=".activities.ChatActivity" />
+        <activity
+            android:name=".activities.AccountSetting"
+            android:label="@string/action_settings" />
+        <activity
+            android:name=".setting.AccountActivity"
+            android:label="@string/account" />
+        <activity
+            android:name=".activities.NotificationActivity"
+            android:label="@string/title_notifications" />
+        <activity
+            android:name=".activities.UpdateProfile"
+            android:label="@string/updateprofile" />
+        <activity android:name=".activities.TestActivity"></activity>
     </application>
 
 </manifest>

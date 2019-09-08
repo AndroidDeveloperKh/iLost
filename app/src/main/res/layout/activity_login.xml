@@ -97,7 +97,7 @@
             android:id="@+id/sign_up_via_social"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/r_signup_with"
             android:textColor="@color/colorPrimary" />
@@ -111,7 +111,7 @@
                 android:id="@+id/login_img_google_login"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_margin="30dp"
+                android:layout_margin="20dp"
                 android:background="@drawable/google_rounded_button"
                 android:contentDescription="@string/app_name"
                 android:padding="3dp"
@@ -123,7 +123,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/fb_logo"
-                android:layout_margin="30dp"
+                android:layout_margin="20dp"
                 android:contentDescription="@string/app_name"/>
 
             <ImageView
@@ -131,7 +131,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/phone_logo"
-                android:layout_margin="30dp"
+                android:layout_margin="20dp"
                 android:contentDescription="@string/app_name"/>
 
         </LinearLayout>

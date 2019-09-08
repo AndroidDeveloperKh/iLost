@@ -125,7 +125,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         account.put("uid", user.getUid());
         account.put("name", user.getDisplayName());
         account.put("email", user.getEmail());
+        account.put("photourl",user.getPhotoUrl());
         account.put("provider", user.getProviderId());
+
         //noinspection ConstantConditions
         account.put("createdDate", user.getMetadata().getCreationTimestamp());
         account.put("signedInDate", user.getMetadata().getLastSignInTimestamp());

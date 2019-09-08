@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:id="@+id/layoutBottomSheet"
+    android:layout_margin="40dp"
+    android:paddingTop="8dp">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/r_1"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:id="@+id/l_camera"
+        android:layout_gravity="center"
+
+        android:paddingTop="8dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/c_camera"
+            app:cardCornerRadius="3dp"
+            android:layout_height="45dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Camera"
+                android:textColor="#737373"
+                android:padding="5dp"
+
+
+                android:textSize="16sp" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/c_camera"
+            app:cardCornerRadius="3dp"
+            android:id="@+id/c_chooseimg"
+            android:layout_marginTop="1dp"
+            android:layout_height="45dp">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Choose Image"
+                android:textColor="#737373"
+                android:textSize="16sp" />
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/c_chooseimg"
+            android:layout_marginTop="1dp"
+            android:id="@+id/c_delete"
+            app:cardCornerRadius="3dp"
+            android:layout_height="45dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Delete"
+                android:textColor="#737373"
+                android:textSize="16sp" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/c_delete"
+            android:layout_marginTop="25dp"
+            android:id="@+id/c_cancel"
+            app:cardCornerRadius="3dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Cancel"
+                android:textColor="#737373"
+                android:textSize="16sp" />
+
+        </android.support.v7.widget.CardView>
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

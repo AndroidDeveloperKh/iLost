@@ -10,20 +10,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
-import com.google.firebase.auth.FirebaseUser;
 
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import kh.com.ilost.R;
 
+import kh.com.ilost.activities.AccountSetting;
 import kh.com.ilost.activities.LoginActivity;
-import kh.com.ilost.activities.SettingsActivity;
+import kh.com.ilost.activities.NotificationActivity;
+import kh.com.ilost.activities.TestActivity;
 import kh.com.ilost.setting.AccountActivity;
 
 
@@ -36,9 +37,9 @@ public class SettingFragment extends Fragment {
 
     private FirebaseAuth fAuth;
     String TAG;
+   private CardView c_addAccount ,c_notification,c_account,home_btn_logout,c_save;
 
-    private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
+
     TextView txt_username;
 
 
@@ -53,10 +54,13 @@ public class SettingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
-        CardView cardView = (CardView)view.findViewById(R.id.c_notifi);
-        CardView c_account =(CardView)view.findViewById(R.id.c_account);
-        CardView home_btn_logout = (CardView)view.findViewById(R.id.home_btn_logout);
+         c_notification = (CardView)view.findViewById(R.id.c_notifi);
+        c_account =(CardView)view.findViewById(R.id.c_account);
+         home_btn_logout = (CardView)view.findViewById(R.id.home_btn_logout);
         txt_username =(TextView)view.findViewById(R.id.txt_username);
+        c_addAccount=(CardView)view.findViewById(R.id.c_addAccount);
+        c_save=(CardView)view.findViewById(R.id.c_save);
+
 
 
 
@@ -72,13 +76,28 @@ public class SettingFragment extends Fragment {
 
 //https://theengineerscafe.com/save-and-retrieve-data-firebase-android/
 
-        cardView.setOnClickListener(new View.OnClickListener() {
+
+        c_addAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent i = new Intent(getActivity(),SettingsActivity.class);
+
+                Intent i = new Intent(getActivity(),TestActivity.class);
                 startActivity(i);
             }
         });
+
+
+
+        c_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent account_setting = new Intent(getActivity(),AccountSetting.class);
+                startActivity(account_setting);
+            }
+        });
+
+
 
         c_account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,17 +106,16 @@ public class SettingFragment extends Fragment {
                 startActivity(account);
 
 
-
-
             }
         });
 
-
-
-
-
-
-
+        c_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),NotificationActivity.class);
+                startActivity(i);
+            }
+        });
 
 
         return view;

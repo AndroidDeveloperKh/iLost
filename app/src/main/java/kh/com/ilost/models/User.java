@@ -7,6 +7,7 @@ public class User {
     private String name;
     private String email;
     private String photoUrl;
+
     private Boolean verified;
     private String provider;
     private Boolean active;
@@ -15,16 +16,19 @@ public class User {
     private double updatedAt;
 
 
-    public User(String uid, String name, String email) {
+    public User(String uid, String name, String email,String photoUrl) {
         this.uid = uid;
         this.name = name;
         this.email = email;
+        this.photoUrl=photoUrl;
+
 
     }
 
     public User(){
 
     }
+
 
     public String getUid() {
         return uid;
@@ -38,6 +42,7 @@ public class User {
         this.name = name;
     }
 
+
     public String getEmail() {
         return email;
     }
@@ -46,6 +51,7 @@ public class User {
         this.email = email;
     }
 
+
     public String getPhotoUrl() {
         return photoUrl;
     }
@@ -53,6 +59,7 @@ public class User {
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
     }
+
 
     public Boolean getVerified() {
         return verified;

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SettingFragment">
 
@@ -10,63 +12,86 @@
     <RelativeLayout
         android:id="@+id/r_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
+        android:padding="20dp"
         android:layout_alignParentLeft="true">
 
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/c_account"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="4dp"
-            app:cardCornerRadius="3dp">
+<android.support.v7.widget.CardView
+    android:layout_width="200dp"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/c_account"
+    android:layout_alignParentTop="true"
+    android:layout_height="200dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
-                android:layout_width="70dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/profile_edit"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp" />
+
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/profile_edit"
+        />
 
 
             <TextView
+
                 android:id="@+id/txt_username"
-                android:layout_width="140dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="25dp"
-                android:hint="@string/username"
-                android:layout_marginLeft="110dp"
-                android:textSize="17dp" />
+                android:layout_below="@+id/btn_bottom_sheet_dialog"
+                android:layout_gravity="center"
+                android:text="@string/username"
+                android:textAlignment="center"
+
+                android:textSize="15dp"
+                android:layout_marginTop="50dp"
+
+
+
+
+
+                />
 
             <!--android:layout_alignLeft="@+id/profile_image"-->
 
+</android.support.v7.widget.CardView>
 
-        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/r_1"
+    android:layout_marginTop="10dp"
 
 
-        <android.support.v7.widget.CardView
 
-            android:id="@+id/c_account_setting"
+    >
+
+
+    <android.support.v7.widget.CardView
+
+            android:id="@+id/c_addAccount"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="1dp"
             app:cardCornerRadius="3dp"
             android:layout_alignParentLeft="true">
 
 
             <ImageView
                 android:id="@+id/img_account"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5sp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/settings2" />
 
@@ -75,8 +100,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
-                android:paddingTop="10dp"
-                android:text="@string/account_setting"
+                android:paddingTop="5sp"
+                android:text="@string/addaccount"
                 android:textColor="@color/grayblue"
                 android:textSize="16dp" />
 
@@ -89,16 +114,17 @@
             android:id="@+id/c_save"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@+id/c_account"
-            android:layout_marginTop="70dp"
+            android:layout_below="@+id/c_addAccount"
+            android:layout_marginTop="7dp"
             app:cardCornerRadius="3dp">
 
 
             <ImageView
                 android:id="@+id/t_save"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="10sp"
                 android:src="@drawable/save" />
 
             <TextView
@@ -119,26 +145,27 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@+id/c_save"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="7dp"
             app:cardCornerRadius="3dp">
 
             <ImageView
                 android:id="@+id/t_noti"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="30dp"
-                android:src="@drawable/notifi" />
+                android:src="@drawable/notifi"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="30dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/t_lang"
                 android:layout_marginLeft="80dp"
-                android:paddingTop="10dp"
+                android:paddingTop="10sp"
                 android:text="@string/notification"
                 android:textColor="@color/grayblue"
-
-                android:textSize="16dp" />
+                android:textSize="16sp"
+                android:layout_marginStart="80dp" />
 
 
         </android.support.v7.widget.CardView>
@@ -146,12 +173,11 @@
         <android.support.v7.widget.CardView
             android:id="@+id/home_btn_logout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/c_notifi"
-            android:layout_marginTop="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
             app:cardCornerRadius="3dp"
-
-            >
+            android:layout_alignParentLeft="true">
 
             <TextView
                 android:id="@+id/home_btn_logouts"
@@ -163,7 +189,6 @@
                 android:textSize="20dp" />
 
         </android.support.v7.widget.CardView>
-
 
     </RelativeLayout>
 

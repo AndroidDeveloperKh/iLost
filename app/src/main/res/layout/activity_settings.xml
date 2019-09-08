@@ -5,245 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.SettingsActivity">
-
-    <!--<de.hdodenhof.circleimageview.CircleImageView-->
-        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-        <!--android:id="@+id/profile_image"-->
-        <!--android:layout_width="96dp"-->
-        <!--android:layout_height="96dp"-->
-        <!--android:src="@drawable/profile_edit"-->
-        <!--app:civ_border_width="2dp"-->
-        <!--android:layout_margin="25dp"-->
-        <!--app:civ_border_color="#FF000000"/>-->
+    android:id="@+id/LinearLayout1"
+    tools:context=".activities.NotificationActivity">
 
 
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_alignBottom="@+id/profile_image"-->
-        <!--android:layout_marginBottom="36dp"-->
-        <!--android:layout_marginLeft="39dp"-->
-        <!--android:layout_marginStart="39dp"-->
-        <!--android:layout_toEndOf="@+id/profile_image"-->
-        <!--android:id="@+id/c_username"-->
-        <!--android:layout_toRightOf="@+id/profile_image">-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/txt_username"-->
-            <!--android:paddingTop="5dp"-->
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="SelectImg" />
 
-            <!--android:textSize="20sp"/>-->
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From Camera" />
 
-    <!--</android.support.v7.widget.CardView>-->
+    </LinearLayout>
 
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_alignLeft="@+id/c_username"-->
-        <!--android:layout_alignStart="@+id/c_username"-->
-        <!--android:layout_alignTop="@+id/c_username"-->
-        <!--android:layout_marginTop="52dp"-->
-        <!--android:id="@+id/c_lastname">-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/colorAccent"
+        android:layout_marginBottom="50dp" />
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textAlignment="center"-->
-            <!--android:text="@string/hongdaly"-->
-            <!--android:paddingTop="5dp"-->
-            <!--android:id="@+id/txt_lastname"-->
-            <!--android:textSize="20dp"/>-->
-
-    <!--</android.support.v7.widget.CardView>-->
-
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_below="@+id/c_lastname"-->
-        <!--android:layout_marginTop="35dp"-->
-        <!--android:id="@+id/c_email">-->
-
-        <!--<ImageView-->
-            <!--android:layout_width="40dp"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:src="@drawable/mail"-->
-            <!--/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-
-            <!--android:layout_alignLeft="@+id/cardView"-->
-            <!--android:layout_alignStart="@+id/cardView"-->
-            <!--android:layout_below="@+id/cardView"-->
-            <!--android:layout_marginLeft="40dp"-->
-            <!--android:layout_marginStart="40dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:hint="email@gmail.com"-->
-            <!--android:nextFocusRight="@drawable/mail"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:textSize="15dp" />-->
-
-    <!--</android.support.v7.widget.CardView>-->
-
-
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_below="@+id/c_email"-->
-        <!--android:layout_marginTop="4dp"-->
-        <!--android:id="@+id/c_phone">-->
-
-        <!--<ImageView-->
-            <!--android:layout_width="40dp"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:src="@drawable/phone"-->
-            <!--/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-
-            <!--android:layout_alignLeft="@+id/cardView"-->
-            <!--android:layout_alignStart="@+id/cardView"-->
-            <!--android:layout_below="@+id/cardView"-->
-            <!--android:layout_marginLeft="40dp"-->
-            <!--android:layout_marginStart="40dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:hint="phone"-->
-            <!--android:nextFocusRight="@drawable/mail"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:textSize="15dp" />-->
-
-    <!--</android.support.v7.widget.CardView>-->
-
-
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_below="@+id/c_phone"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:id="@+id/c_gender">-->
-
-        <!--<ImageView-->
-            <!--android:layout_width="40dp"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:src="@drawable/gender"-->
-            <!--/>-->
-
-        <!--<Spinner-->
-            <!--android:id="@+id/gender"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-
-            <!--/>-->
-
-    <!--</android.support.v7.widget.CardView>-->
-
-
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_below="@+id/c_gender"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:id="@+id/c_date">-->
-
-        <!--<ImageView-->
-            <!--android:layout_width="40dp"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:src="@drawable/calender"-->
-            <!--/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Birthday"-->
-            <!--android:id="@+id/txt_birth"-->
-            <!--android:layout_marginLeft="40dp"-->
-            <!--/>-->
-
-
-
-        <!--<Spinner-->
-
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="120dp"-->
-            <!--android:id="@+id/day"-->
-
-            <!--/>-->
-
-        <!--<Spinner-->
-
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="160dp"-->
-            <!--android:id="@+id/month"-->
-
-            <!--/>-->
-
-        <!--<Spinner-->
-
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:nextFocusRight="@drawable/calender"-->
-            <!--android:layout_marginLeft="200dp"-->
-            <!--android:id="@+id/year"-->
-
-            <!--/>-->
-
-    <!--</android.support.v7.widget.CardView>-->
-
-
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_below="@+id/c_date"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:id="@+id/c_address">-->
-
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/map"-->
-            <!--/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/notification"-->
-            <!--android:layout_marginLeft="50dp"-->
-            <!--android:id="@+id/txt_address"/>-->
-
-
-    <!--</android.support.v7.widget.CardView>-->
-
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:id="@+id/c_logout"-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_alignLeft="@+id/c_address"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignStart="@+id/c_address"-->
-        <!--android:layout_marginBottom="49dp">-->
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/update"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:textSize="17dp"-->
-            <!--android:textColor="@color/brown"/>-->
-
-
-    <!--</android.support.v7.widget.CardView>-->
-
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="UPLOAD" />
 </RelativeLayout>

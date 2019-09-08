@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements
         if (itemId == R.id.navigation_home) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.main_layout, new FragmentHome()).commit();
+
         } else if (itemId == R.id.navigation_message) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.main_layout, new FragmentMessage()).commit();

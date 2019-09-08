@@ -35,11 +35,13 @@ public class AccountActivity extends AppCompatActivity {
 
     private TextView txt_Username,txt_Password,txt_Email,txt_Adress;
     private Button btn_Edit;
-    private String TAG="AccountActivity";
+    private String TAG=AccountActivity.class.getName();
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private String UserId;
+
+
 
     private FirebaseAuth.AuthStateListener mAuthListerner;
 
@@ -54,6 +56,7 @@ public class AccountActivity extends AppCompatActivity {
         txt_Email  = (TextView)findViewById(R.id.txt_email);
         txt_Adress = (TextView)findViewById(R.id.txt_address);
         btn_Edit = (Button)findViewById(R.id.btn_edit);
+
 
 
 
